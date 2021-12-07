@@ -10,7 +10,7 @@ description: "这是春晖翻译的Linux Shell 脚本编写指南，用以记录
 link-citations: yes
 github-repo: ChevyXu/Linux_Shell_Script
 url: 'http\://http://xuchunhui.top'
-favicon: images/favicon.png
+favicon: images/favicon.ico
 ---
 
 
