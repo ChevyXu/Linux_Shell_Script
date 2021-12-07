@@ -3,13 +3,16 @@
     "path": "~/GitHub/Linux Shell Scripting Tutorial/README.md",
     "project_path": "README.md",
     "type": "markdown",
-    "hash": "3940805310",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1638846196436.0,
     "source_on_save": false,
     "relative_order": 1,
-    "properties": {},
+    "properties": {
+        "cursorPosition": "13,0",
+        "scrollLine": "0"
+    },
     "folds": "",
     "lastKnownWriteTime": 1638846190,
     "encoding": "UTF-8",
