@@ -24,7 +24,7 @@ knitr::opts_chunk$set(echo = T, eval = T)
 
 **Project Updated: `r Sys.Date()`**
 
-这是春晖翻译的Linux Shell 脚本编写指南，用以记录本人学习Linux Shell Scripting Tutorial (LSST) v2.0的历程
+这是春晖翻译的Linux Shell 脚本编写指南，用以记录本人学习Linux Shell Scripting Tutorial (LSST) v2.0的历程。
 
 ## Introduction {-}
 

@@ -36,8 +36,8 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={A Minimal Book Example},
-  pdfauthor={John Doe},
+  pdftitle={Linux Shell 脚本编写指南},
+  pdfauthor={Written by Vivek Gite; Translated by Chunhui},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -114,9 +114,16 @@
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
 
-\title{A Minimal Book Example}
-\author{John Doe}
-\date{2021-12-07}
+\title{Linux Shell 脚本编写指南}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Linux Shell Scripting Tutorial (LSST)}
+\author{Written by \textbf{Vivek Gite} \and Translated by \textbf{Chunhui}}
+\date{2020-09-01}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -142,13 +149,17 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{about}{%
-\chapter{About}\label{about}}
+\hypertarget{preface-ux524dux8a00}{%
+\chapter*{Preface 前言}\label{preface-ux524dux8a00}}
+\addcontentsline{toc}{chapter}{Preface 前言}
 
-This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports; for example, a math equation \(a^2 + b^2 = c^2\).
+\textbf{Project Updated: 2021-12-07}
 
-\hypertarget{usage}{%
-\section{Usage}\label{usage}}
+这是春晖翻译的Linux Shell 脚本编写指南，用以记录本人学习Linux Shell Scripting Tutorial (LSST) v2.0的历程。
+
+\hypertarget{introduction}{%
+\section*{Introduction}\label{introduction}}
+\addcontentsline{toc}{section}{Introduction}
 
 Each \textbf{bookdown} chapter is an .Rmd file, and each .Rmd file can contain one (and only one) chapter. A chapter \emph{must} start with a first-level heading: \texttt{\#\ A\ good\ chapter}, and can contain one (and only one) first-level heading.
 
@@ -173,9 +184,23 @@ Or build the book from the R console:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{render\_book}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(}\StringTok{"name"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## [1] "name"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{echo} \StringTok{"name"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## name
+\end{verbatim}
 
 To render this example to PDF as a \texttt{bookdown::pdf\_book}, you'll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.org/tinytex/}.
 
