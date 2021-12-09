@@ -24,3 +24,6 @@ project-updated-2021-12-08
 第一章linux快速介绍
 section
 helloworld
+第一章linux快速介绍-linux-introduction
+helloworld-linux-introduction
+Linux_Introduction
