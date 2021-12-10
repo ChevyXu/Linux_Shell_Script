@@ -1,0 +1,43 @@
+--- 
+title: "Linux Shell 脚本编写指南"
+subtitle: Linux Shell Scripting Tutorial (LSST)
+author: ["Written by **Vivek Gite**", "Translated by **Chunhui**"]
+date: "2020-09-01"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+description: "这是春晖翻译的Linux Shell 脚本编写指南，用以记录本人学习Linux Shell Scripting Tutorial (LSST) v2.0的历程"
+link-citations: yes
+github-repo: ChevyXu/Linux_Shell_Script
+url: 'http\://http://xuchunhui.top'
+favicon: images/favicon.png
+---
+
+# Preface 前言 {-}
+<hr>
+<!-- R global options: R chunk images display without code (no echo); show PDF image over JPG/PNG when available in PDF output -->
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T, eval = T)
+# options(knitr.graphics.auto_pdf = TRUE)
+```
+
+> **Project Updated: `r Sys.Date()`**
+
+
+这是春晖翻译的Linux Shell 脚本编写指南，用以记录本人学习Linux Shell Scripting Tutorial (LSST) v2.0的历程。
+
+
+## Authors & Acknowledgements {- #authors}
+
+| Author      | About Chunhui     |
+| ------------ | ------------ |
+| ![](images/linux_vv.png) | **Vivek Gite**: Hello, world! <br> My name is Vivek Gite, and online everywhere, I am known as “nixCraft.” I currently create and maintain the following resources on the web: <br> https://www.cyberciti.biz – Linux blog  <br> https://www.nixcraft.com – Linux and Unix forum <br> https://www.opensourceflare.com – No ads. No tracking. Exclusive in-depth guides for nixCraft Patreon supporters <br> Popular social media account on Twitter and Facebook as `@nixcraft` |
+| ![](images/chunhui.jpg) | **Chunhui** , a Ph.D. candidate in CAS(Chinese Academy of Science). <br> Exploring data and learning new knowledge always cheer himself up, making Chunhui a better man who stuck to DATA SCIENCE. |
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
