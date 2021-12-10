@@ -1,24 +1,24 @@
 {
-    "id": "5618FFD7",
-    "path": "~/GitHub/Linux Shell Scripting Tutorial/01-intro.Rmd",
-    "project_path": "01-intro.Rmd",
+    "id": "A89615C5",
+    "path": "~/GitHub/Linux Shell Scripting Tutorial/01_第一章.Rmd",
+    "project_path": "01_第一章.Rmd",
     "type": "r_markdown",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1639112400862.0,
+    "created": 1639125347999.0,
     "source_on_save": false,
     "relative_order": 2,
     "properties": {
-        "cursorPosition": "0,15",
+        "cursorPosition": "2,6",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1639112929,
+    "lastKnownWriteTime": 1639121547,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1639112929865,
+    "last_content_update": 1639121547,
     "read_only": false,
     "read_only_alternatives": []
 }
