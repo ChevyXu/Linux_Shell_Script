@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = T, eval = T)
 
 ## Authors & Acknowledgements {- #authors}
 
-| Author      | About Chunhui     |
+| Author      | About Authors     |
 | ------------ | ------------ |
 | ![](images/linux_vv.png) | **Vivek Gite**: Hello, world! <br> My name is Vivek Gite, and online everywhere, I am known as “nixCraft.” I currently create and maintain the following resources on the web: <br> https://www.cyberciti.biz – Linux blog  <br> https://www.nixcraft.com – Linux and Unix forum <br> https://www.opensourceflare.com – No ads. No tracking. Exclusive in-depth guides for nixCraft Patreon supporters <br> Popular social media account on Twitter and Facebook as `@nixcraft` |
 | ![](images/chunhui.jpg) | **Chunhui** , a Ph.D. candidate in CAS(Chinese Academy of Science). <br> Exploring data and learning new knowledge always cheer himself up, making Chunhui a better man who stuck to DATA SCIENCE. |
