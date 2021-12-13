@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第 1 章 Linux快速介绍 | Linux Shell 脚本编写指南</title>
+  <meta name="description" content="这是春晖翻译的Linux Shell 脚本编写指南，用以记录本人学习Linux Shell Scripting Tutorial (LSST) v2.0的历程" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第 1 章 Linux快速介绍 | Linux Shell 脚本编写指南" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="http://http://xuchunhui.top" />
+  <meta property="og:image" content="http://xuchunhui.top/images/favicon.png" />
+  <meta property="og:description" content="这是春晖翻译的Linux Shell 脚本编写指南，用以记录本人学习Linux Shell Scripting Tutorial (LSST) v2.0的历程" />
+  <meta name="github-repo" content="ChevyXu/Linux_Shell_Script" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第 1 章 Linux快速介绍 | Linux Shell 脚本编写指南" />
+  
+  <meta name="twitter:description" content="这是春晖翻译的Linux Shell 脚本编写指南，用以记录本人学习Linux Shell Scripting Tutorial (LSST) v2.0的历程" />
+  <meta name="twitter:image" content="http://xuchunhui.top/images/favicon.png" />
+
+<meta name="author" content="Written by Vivek Gite" />
+<meta name="author" content="Translated by Chunhui" />
+
+
+<meta name="date" content="2020-09-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+<link rel="prev" href="index.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Linux Shell 脚本编写指南</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface 前言</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i>Authors &amp; Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Linux快速介绍</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#linux是什么"><i class="fa fa-check"></i><b>1.1</b> Linux是什么</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#谁创建了linux"><i class="fa fa-check"></i><b>1.2</b> 谁创建了Linux</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#在哪里下载linux"><i class="fa fa-check"></i><b>1.3</b> 在哪里下载Linux</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#如何安装linux"><i class="fa fa-check"></i><b>1.4</b> 如何安装Linux</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#什么是linux-kernel"><i class="fa fa-check"></i><b>1.5</b> 什么是Linux Kernel</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#什么是linux-shell"><i class="fa fa-check"></i><b>1.6</b> 什么是Linux Shell</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="intro.html"><a href="intro.html#shell是什么"><i class="fa fa-check"></i><b>1.6.1</b> Shell是什么</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro.html"><a href="intro.html#命令提示符-shell-prompt"><i class="fa fa-check"></i><b>1.6.2</b> 命令提示符 (Shell Prompt)</a></li>
+<li class="chapter" data-level="1.6.3" data-path="intro.html"><a href="intro.html#如何知道我现在有哪些shell"><i class="fa fa-check"></i><b>1.6.3</b> 如何知道我现在有哪些shell</a></li>
+<li class="chapter" data-level="1.6.4" data-path="intro.html"><a href="intro.html#命令行界面-command-line-interface-cli"><i class="fa fa-check"></i><b>1.6.4</b> 命令行界面 (Command Line Interface, CLI)</a></li>
+<li class="chapter" data-level="1.6.5" data-path="intro.html"><a href="intro.html#基本的命令行操作"><i class="fa fa-check"></i><b>1.6.5</b> 基本的命令行操作</a></li>
+<li class="chapter" data-level="1.6.6" data-path="intro.html"><a href="intro.html#执行一个命令"><i class="fa fa-check"></i><b>1.6.6</b> 执行一个命令</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#unix的哲学"><i class="fa fa-check"></i><b>1.7</b> UNIX的哲学</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#什么是shell脚本"><i class="fa fa-check"></i><b>1.8</b> 什么是shell脚本</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#为什么使用shell脚本"><i class="fa fa-check"></i><b>1.9</b> 为什么使用shell脚本</a>
+<ul>
+<li class="chapter" data-level="1.9.1" data-path="intro.html"><a href="intro.html#特性"><i class="fa fa-check"></i><b>1.9.1</b> 特性:</a></li>
+<li class="chapter" data-level="1.9.2" data-path="intro.html"><a href="intro.html#常见的应用场景"><i class="fa fa-check"></i><b>1.9.2</b> 常见的应用场景:</a></li>
+<li class="chapter" data-level="1.9.3" data-path="intro.html"><a href="intro.html#优势"><i class="fa fa-check"></i><b>1.9.3</b> 优势:</a></li>
+<li class="chapter" data-level="1.9.4" data-path="intro.html"><a href="intro.html#劣势"><i class="fa fa-check"></i><b>1.9.4</b> 劣势:</a></li>
+<li class="chapter" data-level="1.9.5" data-path="intro.html"><a href="intro.html#学习目标"><i class="fa fa-check"></i><b>1.9.5</b> 学习目标</a></li>
+</ul></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#本章节复习题"><i class="fa fa-check"></i><b>1.10</b> 本章节复习题</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="http://xuchunhui.top" target="blank">Chunhui's Blog</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Linux Shell 脚本编写指南</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1" number="1">
+<h1><span class="header-section-number">第 1 章</span> Linux快速介绍</h1>
+<blockquote>
+<p>本章节学习目标：<br>
+1. 了解什么是shell脚本 <br>
+2. 了解Linux kernel, shell, bash and scripting basic</p>
+</blockquote>
+<div id="linux是什么" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Linux是什么</h2>
+<p>Linux是一个基于Unix的开源操作系统，Linus Torvalds是其开发者，同时也得到了世界上很多开发者的帮助，他的特性包括但不限于：</p>
+<ul>
+<li>免费</li>
+<li>类Unix系统</li>
+<li>开源</li>
+<li>网络操作系统</li>
+</ul>
+<p>严格意义上来说，Linux是一个kernel（内核），kernel提供了对计算机硬件和资源的访问与操作：</p>
+<ul>
+<li>文件和数据</li>
+<li>运行中的程序</li>
+<li>加载程序到内存</li>
+<li>网络</li>
+<li>安全和防火墙</li>
+<li>。。。等等</li>
+</ul>
+<p>但是一个系统只有kernels是不够的，日常的使用需求还要求系统携带文本编辑器、邮件客户端、浏览器、办公应用等；所以就有了基于Linux kernel并整合了多种工具的Linux发行版，一般来说，发行版需要具有以下的特征：</p>
+<ul>
+<li>Linux kernel</li>
+<li>GUN应用</li>
+<li>图形使用界面</li>
+<li>办公应用</li>
+<li>软件开发工具和编译器</li>
+<li>充足的可使用的软件包</li>
+<li>Linux 安装程序（脚本）</li>
+<li>Linux管理工具（例如增加使用者，安装软件等）</li>
+<li>一个整合了这些特性的shell</li>
+</ul>
+<p>有些公司在使用Linux的时候需要技术支持，就催生了一些公司例如 <a href="https://bash.cyberciti.biz/guide/Red_Hat">Red Hat</a> 和 <a href="https://bash.cyberciti.biz/guide/Novell">Novell</a> 等公司发行收费的Linux发行版并提供技术支持，当然开源社区也有完全免费的产品例如<a href="https://bash.cyberciti.biz/guide/Debian">Debian</a> 和 <a href="https://bash.cyberciti.biz/guide/Gentoo">Gentoo</a>等。目前世界上有超过200种Linux发行版。</p>
+</div>
+<div id="谁创建了linux" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> 谁创建了Linux</h2>
+<p>1991年，Linus Torvalds在大学期间接触到了UNIX，他当时使用的是一个适用于科研的Unix版本(Minix)，但是Minix有着不少缺陷，于是他就开发了他自己的”Minix”，也就是后来的Linux，Linux的开源也就是从这个时候开始的。</p>
+<div class="figure">
+<img src="https://bash.cyberciti.biz/uploads/bashwiki/6/69/Linus_Torvalds.jpeg" alt="" />
+<p class="caption">Linus Torvalds</p>
+</div>
+<p>Linux是Linus开发的kernel，Linux与GUN项目中的系统程序与库绑定在一起，创造了一个可用性很高的操作系统。有时候大家会把Linux说成GUN/Linux是因为Linux是直接整合的GUN项目，另外需要知道的是，Linus Torvalds是Linux kernel的创作者，而不是Linux系统的拥有者<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<blockquote>
+<p>Linux 发布版 = Linux kernel + GUN 系统实用程序和库 + 安装脚本 + 管理程序</p>
+</blockquote>
+<p>另外需要注意的是，Linux目前有很多发行版，以适应服务器、桌面、工作站等一系列的需求。</p>
+<p>额外链接：</p>
+<blockquote>
+<p><a href="https://plus.google.com/+LinusTorvalds">Linus Torvalds profile at Google+</a> <br>
+<a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a> <br>
+<a href="https://torvalds-family.blogspot.com/">Linus’s Blog</a> (not updated anymore)</p>
+</blockquote>
+</div>
+<div id="在哪里下载linux" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> 在哪里下载Linux</h2>
+<p>通过网络进行下载是最方便的，以下是推荐的数款发布版本（下列不予翻译）：</p>
+<ul>
+<li><a href="https://fedoraproject.org/">Fedora Linux</a> - Fedora is a distribution of Linux based on Red Hat linux, developed by the Fedora Project. Fedora is good for both desktop and laptop usage including sys admins.</li>
+<li><a href="https://centos.org/">CentOS Linux</a> - CentOS is a community-supported, mainly free software operating system based on Red Hat Enterprise Linux. CentOS is good for server usage.</li>
+<li><a href="https://debian.org/">Debian Linux</a> - Debian focuses on stability and security and is used as a base for many other distributions such as Ubuntu. Debian stable is good for server usage.</li>
+<li><a href="https://ubuntu.com/">Ubuntu Linux</a> - Ubuntu originally based on the Debian Linux distribution. Ubuntu is designed primarily for desktop usage, though netbook and server editions exist as well.</li>
+<li><a href="https://www.opensuse.org/">OpenSuse Linux</a> - openSUSE is a general purpose Linux distribution and sponsored by Novell. However, it is quite popular on Laptop and desktop usage.</li>
+<li><a href="http://slackware.org/">Slackware Linux</a> - It was one of the earliest operating systems to be built on top of the Linux kernel and is the oldest currently being maintained. Slackware is pretty popular among the hardcore Linux users and sys admins.</li>
+<li><a href="https://www.linuxmint.com/">Linux Mint Linux</a> - Linux Mint provides an up-to-date, stable operating system for the average user, with a strong focus on usability and ease of installation.</li>
+<li><a href="http://www.pclinuxos.com/">PCLinuxOS Linux</a> - PCLinuxOS comes with KDE Plasma Desktop as its default user interface. It is a primarily free software operating system for personal computers aimed at ease of use.</li>
+<li><a href="http://www.mandriva.com/">Mandriva Linux</a> - Mandriva Linux is a French Linux distribution distributed by Mandriva. It uses the RPM Package Manager.</li>
+<li><a href="http://www.sabayonlinux.org/">Sabayon Linux</a> - Sabayon is based upon Gentoo Linux and it follows the OOTB (Out of the Box) philosophy, having the goal to give the user a wide number of applications ready to use and a self-configured operating system.</li>
+<li><a href="https://www.archlinux.org/">Arch Linux</a> - Arch Linux is a Linux distribution intended to be lightweight and simple. The design approach of the development team focuses on simplicity, elegance, code correctness and minimalism.</li>
+<li><a href="https://gentoo.org/">Gentoo Linux</a> - Gentoo Linux is a computer operating system built on top of the Linux kernel and based on the Portage package management system.</li>
+</ul>
+</div>
+<div id="如何安装linux" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> 如何安装Linux</h2>
+<ul>
+<li><a href="https://docs.fedoraproject.org/en-US/Fedora/26/html/Installation_Guide/index.html">Fedora 26: Installation Guide</a> - Installing Fedora Linux version 26 on x86, AMD64, and Intel 64 architectures.</li>
+<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/index.html">Red Hat Enterprise Linux 7: Installation Guide</a> - Installing Red Hat Enterprise Linux version 7 for all architectures.</li>
+<li><a href="https://www.debian.org/releases/stable/installmanual">Debian GNU/Linux stable</a> - Installation Guide. Also, contains pointers and information on how to make the most of your new Debian system. There is a <a href="https://youtu.be/FNL8PHxTfkQ">quick video tutorial/demo</a> available too.</li>
+<li><a href="https://help.ubuntu.com/lts/serverguide/installation.html">Ubuntu Installation Guide</a> - This chapter provides a quick overview of installing Ubuntu 16.04 LTS Server Edition.</li>
+<li><a href="http://www.slackbook.org/">Slackware installation guide</a> - There is a <a href="http://www.slackware.com/install/">quick help</a> available at the official website.</li>
+<li><a href="https://www.linuxmint.com/documentation.php">Linux mint user guide</a> - Linux Mint provides user guides to guide you through the installation and the usage of the desktop.</li>
+<li><a href="https://doc.opensuse.org/">OpenSuse installation guide</a> - This site hosts documentation for openSUSE Leap and related projects including installation and sysadmin topics.</li>
+<li><a href="https://wiki.archlinux.org/index.php/installation_guide">Arch Linux installation guide</a> - This document is a guide for installing Arch Linux from the live system booted with the official installation image.</li>
+</ul>
+</div>
+<div id="什么是linux-kernel" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> 什么是Linux Kernel</h2>
+<p>kernel是Linux操作系统的核心，每个Linux发行版都会包括两个部分:</p>
+<ol style="list-style-type: decimal">
+<li>Linux kernel</li>
+<li>Linux shell</li>
+</ol>
+<p>kernel的作用包括文件管理、多任务处理、内存管理、输入输出设备管理、进程管理、设备管理、网络管理（包括ipv4和ipv6）以及一系列更加深入的功能。kernel决定谁会使用这些资源已经什么时候用，用多久。</p>
+<div class="figure">
+<img src="https://bash.cyberciti.biz/uploads/bashwiki/3/38/Rela.gif" alt="" />
+<p class="caption">Kernel</p>
+</div>
+</div>
+<div id="什么是linux-shell" class="section level2" number="1.6">
+<h2><span class="header-section-number">1.6</span> 什么是Linux Shell</h2>
+<p>计算机能够理解的语言为二进制语言（binary language），早期我们都是使用二进制语言进行操控电脑，但是对我们而言很难阅读及理解。因此，在一个操作系统内有一个特别的程序叫做shell，shell接受人类可以轻易理解的指令并将其转化为kernel可以读入和处理的语言。</p>
+<div id="shell是什么" class="section level3" number="1.6.1">
+<h3><span class="header-section-number">1.6.1</span> Shell是什么</h3>
+<ul>
+<li>shell是一个面对用户的程序，或者说它是提供给用户的交互环境</li>
+<li>它是一个解释器，从标准输入设备例如键盘⌨或者文件读入指令并执行</li>
+<li>shell在用户登入或者打开终端的时候启动</li>
+<li>执行系统程序快捷和简单的方法</li>
+<li>shell不是<a href="https://bash.cyberciti.biz/guide/Kernel">kernel</a>的一部分，但是调用系统kernel执行程序</li>
+<li>现在 <a href="https://bash.cyberciti.biz/guide/Linux">Linux</a>中可用的shell包括：
+<ul>
+<li><a href="https://bash.cyberciti.biz/guide/BASH">BASH</a> ( <a href="https://bash.cyberciti.biz/wiki/index.php?title=Bourne-Again_SHell&amp;action=edit&amp;redlink=1">Bourne-Again SHell</a> ) ：在Linux中最常见的shell，是开源的</li>
+<li><a href="https://bash.cyberciti.biz/guide/CSH">CSH</a> (<a href="https://bash.cyberciti.biz/guide/C_SHell">C SHell</a>)：C shell的语法和使用非常类似C编程语言</li>
+<li><a href="https://bash.cyberciti.biz/wiki/index.php?title=KSH&amp;action=edit&amp;redlink=1">KSH</a> (<a href="https://bash.cyberciti.biz/wiki/index.php?title=Korn_SHell&amp;action=edit&amp;redlink=1">Korn SHell</a>) ：由<a href="https://bash.cyberciti.biz/wiki/index.php?title=AT_%26_T_Bell_Labs&amp;action=edit&amp;redlink=1">AT &amp; T Bell Labs</a>的<a href="https://bash.cyberciti.biz/guide/David_Korn">David Korn</a>建立. Korn Shell 同时也是POSIX Shell标准技术规范的基础</li>
+<li><a href="https://bash.cyberciti.biz/wiki/index.php?title=TCSH&amp;action=edit&amp;redlink=1">TCSH</a>：Berkeley <a href="https://bash.cyberciti.biz/guide/UNIX">UNIX</a> <a href="https://bash.cyberciti.biz/guide/C_shell">C shell</a> (<a href="https://bash.cyberciti.biz/guide/CSH">CSH</a>)的增强版，并与<a href="https://bash.cyberciti.biz/guide/CSH">CSH</a>兼容</li>
+</ul></li>
+</ul>
+<blockquote>
+<p><strong>注意</strong>：所有的shell做的都是同一种工作，只是理解不一样的语法和提供不一样的内建功能，微软开发的 <a href="https://bash.cyberciti.biz/guide/MS-DOS">MS-DOS</a>(Microsoft Disk Operating System)叫做 <a href="https://bash.cyberciti.biz/wiki/index.php?title=COMMAND.COM&amp;action=edit&amp;redlink=1">COMMAND.COM</a>， 行使的是和shell一样的功能，只不过还不是那么强大</p>
+</blockquote>
+</div>
+<div id="命令提示符-shell-prompt" class="section level3" number="1.6.2">
+<h3><span class="header-section-number">1.6.2</span> 命令提示符 (Shell Prompt)</h3>
+<p>有多种方式可以操作shell：</p>
+<ul>
+<li><strong>终端</strong>：桌面版Linux一般都会提供一个基于登陆系统的图形用户界面，一旦登陆就可以通过XTerm/GTerm/KTerm等应用操作shell</li>
+<li><strong>通过secure shell</strong>：一旦登录远端服务器或者工作站就会得到一个命令提示符</li>
+<li><strong>通过console</strong>：有些Linux提供基于文件的登陆系统，一般来说在登陆以后同样会得到一个命令提示符</li>
+</ul>
+</div>
+<div id="如何知道我现在有哪些shell" class="section level3" number="1.6.3">
+<h3><span class="header-section-number">1.6.3</span> 如何知道我现在有哪些shell</h3>
+<p>执行以下的命令即可完成:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="intro.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/shells</span></code></pre></div>
+<pre><code>## # List of acceptable shells for chpass(1).
+## # Ftpd will not allow users to connect who are not using
+## # one of these shells.
+## 
+## /bin/bash
+## /bin/csh
+## /bin/dash
+## /bin/ksh
+## /bin/sh
+## /bin/tcsh
+## /bin/zsh</code></pre>
+<p>多个结果意味着你的Linux支持多个shell</p>
+</div>
+<div id="命令行界面-command-line-interface-cli" class="section level3" number="1.6.4">
+<h3><span class="header-section-number">1.6.4</span> 命令行界面 (Command Line Interface, CLI)</h3>
+<p>shell提供了连接Linux的界面，你可以通过键盘或者其他输入设备完成操作，shell同时也可以成为命令行界面 (Command Line Interface)， 发现现在使用的shell可以通过使用以下命令:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="intro.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$SHELL</span></span></code></pre></div>
+<pre><code>## /bin/zsh</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="intro.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> <span class="va">$$</span></span>
+<span id="cb5-2"><a href="intro.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> <span class="at">-p</span> <span class="va">$$</span></span></code></pre></div>
+<pre><code>##   PID   TT  STAT      TIME COMMAND
+## 87383   ??  S      0:00.00 bash -c ps $$\012ps -p $$
+##   PID TTY           TIME CMD
+## 87383 ??         0:00.00 ps -p 87383</code></pre>
+<p>这就说明我目前使用的是bash/zsh shell</p>
+</div>
+<div id="基本的命令行操作" class="section level3" number="1.6.5">
+<h3><span class="header-section-number">1.6.5</span> 基本的命令行操作</h3>
+<p>你可以使用以下的组合键去编辑和撤销命令:</p>
+<ul>
+<li>CTRL + L : 清理当前屏幕.</li>
+<li>CTRL + W : 清理光标所在处的单词</li>
+<li>CTRL + U : 清理全行命令</li>
+<li>Up键和Down键 : 回溯之前/之后的命令 (<a href="https://bash.cyberciti.biz/guide/Command_history">command history</a>).</li>
+<li>Tab : 自动补全命令/目录名等等</li>
+<li>CTRL + R : 搜索命令记录 (<a href="https://bash.cyberciti.biz/guide/Command_history">command history</a>)</li>
+<li>CTRL + C : 终止当前命令</li>
+<li>CTRL + T : 交换光标前的最后两个字符</li>
+<li>ESC + T : 交换光标前的最后两个单词</li>
+<li>CTRL + H : 删除从光标处开始的字母</li>
+</ul>
+</div>
+<div id="执行一个命令" class="section level3" number="1.6.6">
+<h3><span class="header-section-number">1.6.6</span> 执行一个命令</h3>
+<p>简单的键入你的命令然后回车即可，例如<code>date</code>命令可以查看当前的时间， <code>man data</code>命令可以查看<code>date</code>命令的使用文档，<code>info date</code>可以查看<code>date</code>命令的信息文档，同时常见的命令都会有<code>-h / --help</code>参数用以展示帮助选项:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="intro.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span></code></pre></div>
+<pre><code>## Mon Dec 13 10:00:37 CST 2021</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="intro.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> date <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div>
+<pre><code>## DATE(1)                      General Commands Manual                     DATE(1)
+## 
+## NNAAMMEE
+##      ddaattee – display or set date and time
+## 
+## SSYYNNOOPPSSIISS
+##      ddaattee [--jjRRuu] [--rr _s_e_c_o_n_d_s | _f_i_l_e_n_a_m_e] [--vv [++|--]_v_a_l[_y_m_w_d_H_M_S]] _._._.
+##           [++_o_u_t_p_u_t___f_m_t]
+##      ddaattee [--jjnnuu] [[[_m_m]_d_d]_H_H]_M_M[[_c_c]_y_y][_._s_s]
+##      ddaattee [--jjnnRRuu] --ff _i_n_p_u_t___f_m_t _n_e_w___d_a_t_e [++_o_u_t_p_u_t___f_m_t]</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">info</span> date <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div>
+<pre><code>## info: Writing node (*manpages*)date...
+## info: Done.
+## File: *manpages*,  Node: date,  Up: (dir)
+## 
+## DATE(1)                      General Commands Manual                     DATE(1)
+## 
+## NAME
+##      date – display or set date and time
+## 
+## SYNOPSIS
+##      date [-jRu] [-r seconds | filename] [-v [+|-]val[ymwdHMS]] ...
+##           [+output_fmt]</code></pre>
+</div>
+</div>
+<div id="unix的哲学" class="section level2" number="1.7">
+<h2><span class="header-section-number">1.7</span> UNIX的哲学</h2>
+<p>Unix哲学是基于Unix操作系统主要开发人员的经验开发软件的哲学方法，下面的哲学方法也适用于Linux操作系统:</p>
+<ul>
+<li><em>Do one thing and do it well</em> - Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface.</li>
+<li><em>Everything is file</em> - Ease of use and security is offered by treating hardware as a file.</li>
+<li><em>Small is beautiful</em>.</li>
+<li><em>Store data and configuration in flat text files</em> - Text file is a universal interface. Easy to create, backup and move to another system.</li>
+<li><em>Use shell scripts to increase leverage and portability</em> - Use shell script to automate common tasks across various UNIX / Linux installations.</li>
+<li><em>Chain programs together to complete complex task</em> - Use shell <a href="https://bash.cyberciti.biz/guide/Pipes">pipes</a> and <a href="https://bash.cyberciti.biz/guide/Filters">filters</a> to chain small utilities that perform one task at time.</li>
+<li><em>Choose portability over efficiency.</em></li>
+<li><em>Keep it Simple, Stupid (KISS).</em></li>
+</ul>
+<p>额外链接：</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Unix_philosophy">Wikipedia:Unix philosophy</a></li>
+<li><a href="http://www.catb.org/~esr/writings/taoup/html/ch01s07.html">The Unix Philosophy in One Lesson</a></li>
+</ul>
+</div>
+<div id="什么是shell脚本" class="section level2" number="1.8">
+<h2><span class="header-section-number">1.8</span> 什么是shell脚本</h2>
+<p>一般来说，shell是交互性的 ，也就是说你输入命令，shell接受并执行，返回结果。但是，如果你储存一系列的命令在一个文本文件里面然后执行，这也就是shell程序(<a href="https://bash.cyberciti.biz/wiki/index.php?title=Shell_program&amp;action=edit&amp;redlink=1">shell program</a>)或者称为shell脚本(<a href="https://bash.cyberciti.biz/guide/Shell_script">shell script</a>)</p>
+<p><strong>每个shell脚本都会包括一下几个部分:</strong></p>
+<ul>
+<li>Shell kewwords 例如if…else语句， do…while语句</li>
+<li>Shell commands 例如pwd, test, echo, continue, type等命令</li>
+<li>Linux binary commands 例如w, who, free, etc等</li>
+<li>文本处理程序例如grep, awk, cut等</li>
+<li>函数可以将多个操作整合进一个函数</li>
+<li>控制流例如if…then…else或者shell loop去执行重复的操作</li>
+</ul>
+<p><strong>每个脚本都有一个目的</strong></p>
+<ul>
+<li>特殊目的：备份数据或者上传数据库（例如每隔一段时间执行某个脚本将将数据重新备份）</li>
+<li>执行命令：每个shell脚本就像一条条命令那样被简单执行（使用脚本处理某个数据）</li>
+<li>脚本代码利用：Shell脚本可以从现有脚本扩展。此外，还可以使用函数文件来打包经常使用的任务</li>
+</ul>
+</div>
+<div id="为什么使用shell脚本" class="section level2" number="1.9">
+<h2><span class="header-section-number">1.9</span> 为什么使用shell脚本</h2>
+<p>当你在终端不停执行重复命令的时候，shell脚本就显得很有用</p>
+<div id="特性" class="section level3" number="1.9.1">
+<h3><span class="header-section-number">1.9.1</span> 特性:</h3>
+<ul>
+<li>shell脚本可以从命令行或者文件读入数据参数，然后将结果返回到屏幕</li>
+<li>当你在重复执行同一个任务的时候，你就应该使用shell脚本来减少你的工作量
+<ul>
+<li>创建自己的实用工具</li>
+<li>自动化的输入或者输出</li>
+<li>定制管理任务</li>
+<li>因为脚本的重复性及经过测试，所以会减少犯错的几率</li>
+</ul></li>
+</ul>
+</div>
+<div id="常见的应用场景" class="section level3" number="1.9.2">
+<h3><span class="header-section-number">1.9.2</span> 常见的应用场景:</h3>
+<ul>
+<li>管理你的Linux系统</li>
+<li>数据备份和创建快照</li>
+<li>转储Oracle或者MySQL数据库进行备份</li>
+<li>创建基于电子邮件的警报系统</li>
+<li>找出什么程序吃掉了你部分的系统资源</li>
+<li>找出可用的内存</li>
+<li>找i出所有登陆的用户以及他们在做什么</li>
+<li>找出所有失败的登陆记录，如果同一个IP在重复尝试失败的登录，通过防火墙封掉该IP</li>
+<li>根据你的安全策略进行用户管理</li>
+<li>找出本地或者远程服务器的信息</li>
+<li>配置服务器</li>
+</ul>
+</div>
+<div id="优势" class="section level3" number="1.9.3">
+<h3><span class="header-section-number">1.9.3</span> 优势:</h3>
+<ul>
+<li>使用简单</li>
+<li>快速启动</li>
+<li>节约时间</li>
+<li>系统管理任务自动化</li>
+<li>Shell脚本可以在几乎任何现代UNIX / Linux / BSD / Mac OS X操作系统上执行，因为它们是用解释语言编写的</li>
+</ul>
+</div>
+<div id="劣势" class="section level3" number="1.9.4">
+<h3><span class="header-section-number">1.9.4</span> 劣势:</h3>
+<ul>
+<li>不同平台间会出现比较复杂的问题</li>
+<li>运行速度缓慢</li>
+<li>每一个shell命令都会开启一个新进程</li>
+</ul>
+<p><strong>本教程使用那种shell？</strong></p>
+<blockquote>
+<p>Bash/Zsh shell</p>
+</blockquote>
+</div>
+<div id="学习目标" class="section level3" number="1.9.5">
+<h3><span class="header-section-number">1.9.5</span> 学习目标</h3>
+<p>完成本次课程以后，你可以学到:</p>
+<ul>
+<li>理解Linux shell编程的基础</li>
+<li>自行编写自动化的脚本</li>
+<li>自定义shell启动文件</li>
+<li>创建漂亮的实用程序</li>
+<li>控制你的管理任务，如Linux用户管理，Linux系统监控等</li>
+</ul>
+</div>
+</div>
+<div id="本章节复习题" class="section level2" number="1.10">
+<h2><span class="header-section-number">1.10</span> 本章节复习题</h2>
+<ol style="list-style-type: decimal">
+<li>什么是shell</li>
+</ol>
+<ul>
+<li><code>徐爷的回答：一种交互环境，充当用户和kernel之间的解释器</code></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>写下一个命令，列出终端下的文件</li>
+</ol>
+<ul>
+<li><code>ls</code></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>写下一个命令，以逆创建时间的顺序列出所有以’.perl’结尾的文件信息</li>
+</ol>
+<ul>
+<li><code>ls -r *.perl</code></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>写下一个命令，列出你在运行的程序</li>
+</ol>
+<ul>
+<li><code>ps -aux | grep youranme</code> or <code>top -u yourname</code></li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>写下一个命令，列出待打印的文件</li>
+</ol>
+<ul>
+<li><code>lpq</code> 需要安装软件</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>写下一个命令，删除3个文件分别叫做 file1.txt, file2.txt, and data1.txt</li>
+</ol>
+<ul>
+<li><code>rm file1.txt file2.txt data1.txt</code></li>
+</ul>
+<ol start="7" style="list-style-type: decimal">
+<li>写下一个命令，在/tmp文件夹下创建一个子目录foo</li>
+</ol>
+<ul>
+<li><code>mkdir -p /tmp/foo</code></li>
+</ul>
+<ol start="8" style="list-style-type: decimal">
+<li>写下一个命令，删除刚刚创建的目录</li>
+</ol>
+<ul>
+<li><code>rmdir /tmp/foo</code></li>
+</ul>
+<ol start="9" style="list-style-type: decimal">
+<li>写下一个命令，列出<code>ls</code>命令所有的选项</li>
+</ol>
+<ul>
+<li><code>man ls</code>or <code>man ls</code></li>
+</ul>
+
+</div>
+</div>
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><a href="https://www.gnu.org/gnu/gnu-linux-faq.html">GNU/Linux</a> FAQ by Richard Stallman<a href="intro.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01_第一章.Rmd",
+"text": "编辑"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown.pdf", "bookdown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,310 @@
+# Linux快速介绍 {#intro}
+
+>本章节学习目标：<br>
+1. 了解什么是shell脚本 <br>
+2. 了解Linux kernel, shell, bash and scripting basic
+
+## Linux是什么
+
+Linux是一个基于Unix的开源操作系统，Linus Torvalds是其开发者，同时也得到了世界上很多开发者的帮助，他的特性包括但不限于：
+
+- 免费
+- 类Unix系统
+- 开源
+- 网络操作系统
+
+严格意义上来说，Linux是一个kernel（内核），kernel提供了对计算机硬件和资源的访问与操作：
+
+- 文件和数据
+- 运行中的程序
+- 加载程序到内存
+- 网络
+- 安全和防火墙
+- 。。。等等
+
+但是一个系统只有kernels是不够的，日常的使用需求还要求系统携带文本编辑器、邮件客户端、浏览器、办公应用等；所以就有了基于Linux kernel并整合了多种工具的Linux发行版，一般来说，发行版需要具有以下的特征：
+
+- Linux kernel
+- GUN应用
+- 图形使用界面
+- 办公应用
+- 软件开发工具和编译器
+- 充足的可使用的软件包
+- Linux 安装程序（脚本）
+- Linux管理工具（例如增加使用者，安装软件等）
+- 一个整合了这些特性的shell
+
+有些公司在使用Linux的时候需要技术支持，就催生了一些公司例如 [Red Hat](https://bash.cyberciti.biz/guide/Red_Hat) 和  [Novell](https://bash.cyberciti.biz/guide/Novell) 等公司发行收费的Linux发行版并提供技术支持，当然开源社区也有完全免费的产品例如[Debian](https://bash.cyberciti.biz/guide/Debian) 和 [Gentoo](https://bash.cyberciti.biz/guide/Gentoo)等。目前世界上有超过200种Linux发行版。
+
+## 谁创建了Linux
+
+1991年，Linus Torvalds在大学期间接触到了UNIX，他当时使用的是一个适用于科研的Unix版本(Minix)，但是Minix有着不少缺陷，于是他就开发了他自己的"Minix"，也就是后来的Linux，Linux的开源也就是从这个时候开始的。
+
+![Linus Torvalds](https://bash.cyberciti.biz/uploads/bashwiki/6/69/Linus_Torvalds.jpeg)
+
+Linux是Linus开发的kernel，Linux与GUN项目中的系统程序与库绑定在一起，创造了一个可用性很高的操作系统。有时候大家会把Linux说成GUN/Linux是因为Linux是直接整合的GUN项目，另外需要知道的是，Linus Torvalds是Linux kernel的创作者，而不是Linux系统的拥有者[^1]
+
+>  Linux 发布版 = Linux kernel + GUN 系统实用程序和库 + 安装脚本 + 管理程序
+
+另外需要注意的是，Linux目前有很多发行版，以适应服务器、桌面、工作站等一系列的需求。
+
+[^1]:[GNU/Linux](https://www.gnu.org/gnu/gnu-linux-faq.html) FAQ by Richard Stallman
+
+额外链接：
+
+> [Linus Torvalds profile at Google+](https://plus.google.com/+LinusTorvalds) <br>
+> [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) <br>
+> [Linus's Blog](https://torvalds-family.blogspot.com/) (not updated anymore)
+
+## 在哪里下载Linux
+
+通过网络进行下载是最方便的，以下是推荐的数款发布版本（下列不予翻译）：
+
+- [Fedora Linux](https://fedoraproject.org/) - Fedora is a distribution of Linux based on Red Hat linux, developed by the Fedora Project. Fedora is good for both desktop and laptop usage including sys admins.
+- [CentOS Linux](https://centos.org/) - CentOS is a community-supported, mainly free software operating system based on Red Hat Enterprise Linux. CentOS is good for server usage.
+- [Debian Linux](https://debian.org/) - Debian focuses on stability and security and is used as a base for many other distributions such as Ubuntu. Debian stable is good for server usage.
+- [Ubuntu Linux](https://ubuntu.com/) - Ubuntu originally based on the Debian Linux distribution. Ubuntu is designed primarily for desktop usage, though netbook and server editions exist as well.
+- [OpenSuse Linux](https://www.opensuse.org/) - openSUSE is a general purpose Linux distribution and sponsored by Novell. However, it is quite popular on Laptop and desktop usage.
+- [Slackware Linux](http://slackware.org/) - It was one of the earliest operating systems to be built on top of the Linux kernel and is the oldest currently being maintained. Slackware is pretty popular among the hardcore Linux users and sys admins.
+- [Linux Mint Linux](https://www.linuxmint.com/) - Linux Mint provides an up-to-date, stable operating system for the average user, with a strong focus on usability and ease of installation.
+- [PCLinuxOS Linux](http://www.pclinuxos.com/) - PCLinuxOS comes with KDE Plasma Desktop as its default user interface. It is a primarily free software operating system for personal computers aimed at ease of use.
+- [Mandriva Linux](http://www.mandriva.com/) - Mandriva Linux is a French Linux distribution distributed by Mandriva. It uses the RPM Package Manager.
+- [Sabayon Linux](http://www.sabayonlinux.org/) - Sabayon is based upon Gentoo Linux and it follows the OOTB (Out of the Box) philosophy, having the goal to give the user a wide number of applications ready to use and a self-configured operating system.
+- [Arch Linux](https://www.archlinux.org/) - Arch Linux is a Linux distribution intended to be lightweight and simple. The design approach of the development team focuses on simplicity, elegance, code correctness and minimalism.
+- [Gentoo Linux](https://gentoo.org/) - Gentoo Linux is a computer operating system built on top of the Linux kernel and based on the Portage package management system.
+
+## 如何安装Linux
+
+- [Fedora 26: Installation Guide](https://docs.fedoraproject.org/en-US/Fedora/26/html/Installation_Guide/index.html) - Installing Fedora Linux version 26 on x86, AMD64, and Intel 64 architectures.
+- [Red Hat Enterprise Linux 7: Installation Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/index.html) - Installing Red Hat Enterprise Linux version 7 for all architectures.
+- [Debian GNU/Linux stable](https://www.debian.org/releases/stable/installmanual) - Installation Guide. Also, contains pointers and information on how to make the most of your new Debian system. There is a [quick video tutorial/demo](https://youtu.be/FNL8PHxTfkQ) available too.
+- [Ubuntu Installation Guide](https://help.ubuntu.com/lts/serverguide/installation.html) - This chapter provides a quick overview of installing Ubuntu 16.04 LTS Server Edition.
+- [Slackware installation guide](http://www.slackbook.org/) - There is a [quick help](http://www.slackware.com/install/) available at the official website.
+- [Linux mint user guide](https://www.linuxmint.com/documentation.php) - Linux Mint provides user guides to guide you through the installation and the usage of the desktop.
+- [OpenSuse installation guide](https://doc.opensuse.org/) - This site hosts documentation for openSUSE Leap and related projects including installation and sysadmin topics.
+- [Arch Linux installation guide](https://wiki.archlinux.org/index.php/installation_guide) - This document is a guide for installing Arch Linux from the live system booted with the official installation image.
+
+## 什么是Linux Kernel
+
+kernel是Linux操作系统的核心，每个Linux发行版都会包括两个部分:
+
+1. Linux kernel
+2. Linux shell
+
+kernel的作用包括文件管理、多任务处理、内存管理、输入输出设备管理、进程管理、设备管理、网络管理（包括ipv4和ipv6）以及一系列更加深入的功能。kernel决定谁会使用这些资源已经什么时候用，用多久。
+
+![Kernel](https://bash.cyberciti.biz/uploads/bashwiki/3/38/Rela.gif)
+
+## 什么是Linux Shell
+
+计算机能够理解的语言为二进制语言（binary language），早期我们都是使用二进制语言进行操控电脑，但是对我们而言很难阅读及理解。因此，在一个操作系统内有一个特别的程序叫做shell，shell接受人类可以轻易理解的指令并将其转化为kernel可以读入和处理的语言。
+
+### Shell是什么
+
+- shell是一个面对用户的程序，或者说它是提供给用户的交互环境
+- 它是一个解释器，从标准输入设备例如键盘⌨或者文件读入指令并执行
+- shell在用户登入或者打开终端的时候启动
+- 执行系统程序快捷和简单的方法
+- shell不是[kernel](https://bash.cyberciti.biz/guide/Kernel)的一部分，但是调用系统kernel执行程序
+- 现在 [Linux](https://bash.cyberciti.biz/guide/Linux)中可用的shell包括：
+  - [BASH](https://bash.cyberciti.biz/guide/BASH) ( [Bourne-Again SHell](https://bash.cyberciti.biz/wiki/index.php?title=Bourne-Again_SHell&action=edit&redlink=1) ) ：在Linux中最常见的shell，是开源的
+  - [CSH](https://bash.cyberciti.biz/guide/CSH) ([C SHell](https://bash.cyberciti.biz/guide/C_SHell))：C shell的语法和使用非常类似C编程语言
+  - [KSH](https://bash.cyberciti.biz/wiki/index.php?title=KSH&action=edit&redlink=1) ([Korn SHell](https://bash.cyberciti.biz/wiki/index.php?title=Korn_SHell&action=edit&redlink=1)) ：由[AT & T Bell Labs](https://bash.cyberciti.biz/wiki/index.php?title=AT_%26_T_Bell_Labs&action=edit&redlink=1)的[David Korn](https://bash.cyberciti.biz/guide/David_Korn)建立. Korn Shell 同时也是POSIX Shell标准技术规范的基础
+  - [TCSH](https://bash.cyberciti.biz/wiki/index.php?title=TCSH&action=edit&redlink=1)：Berkeley [UNIX](https://bash.cyberciti.biz/guide/UNIX) [C shell](https://bash.cyberciti.biz/guide/C_shell) ([CSH](https://bash.cyberciti.biz/guide/CSH))的增强版，并与[CSH](https://bash.cyberciti.biz/guide/CSH)兼容
+
+> **注意**：所有的shell做的都是同一种工作，只是理解不一样的语法和提供不一样的内建功能，微软开发的 [MS-DOS](https://bash.cyberciti.biz/guide/MS-DOS)(Microsoft Disk Operating System)叫做 [COMMAND.COM](https://bash.cyberciti.biz/wiki/index.php?title=COMMAND.COM&action=edit&redlink=1)， 行使的是和shell一样的功能，只不过还不是那么强大
+
+### 命令提示符 (Shell Prompt)
+
+有多种方式可以操作shell：
+
+- **终端**：桌面版Linux一般都会提供一个基于登陆系统的图形用户界面，一旦登陆就可以通过XTerm/GTerm/KTerm等应用操作shell
+- **通过secure shell**：一旦登录远端服务器或者工作站就会得到一个命令提示符
+- **通过console**：有些Linux提供基于文件的登陆系统，一般来说在登陆以后同样会得到一个命令提示符
+
+### 如何知道我现在有哪些shell
+
+执行以下的命令即可完成:
+
+```{bash}
+cat /etc/shells
+```
+
+多个结果意味着你的Linux支持多个shell
+
+### 命令行界面 (Command Line Interface, CLI)
+
+shell提供了连接Linux的界面，你可以通过键盘或者其他输入设备完成操作，shell同时也可以成为命令行界面 (Command Line Interface)， 发现现在使用的shell可以通过使用以下命令:
+
+```{bash}
+echo $SHELL
+```
+
+```{bash}
+ps $$
+ps -p $$
+```
+
+这就说明我目前使用的是bash/zsh shell
+
+### 基本的命令行操作
+
+你可以使用以下的组合键去编辑和撤销命令:
+
+- CTRL + L : 清理当前屏幕.
+- CTRL + W : 清理光标所在处的单词
+- CTRL + U : 清理全行命令
+- Up键和Down键 : 回溯之前/之后的命令 ([command history](https://bash.cyberciti.biz/guide/Command_history)).
+- Tab : 自动补全命令/目录名等等
+- CTRL + R : 搜索命令记录 ([command history](https://bash.cyberciti.biz/guide/Command_history))
+- CTRL + C : 终止当前命令
+- CTRL + T : 交换光标前的最后两个字符
+- ESC + T : 交换光标前的最后两个单词
+- CTRL + H : 删除从光标处开始的字母
+
+### 执行一个命令
+
+简单的键入你的命令然后回车即可，例如`date`命令可以查看当前的时间， `man data`命令可以查看`date`命令的使用文档，`info date`可以查看`date`命令的信息文档，同时常见的命令都会有`-h / --help`参数用以展示帮助选项:
+
+```{bash}
+date
+```
+
+```{bash}
+man date | head
+```
+
+```{bash}
+info date | head
+```
+
+## UNIX的哲学
+
+Unix哲学是基于Unix操作系统主要开发人员的经验开发软件的哲学方法，下面的哲学方法也适用于Linux操作系统:
+
+- *Do one thing and do it well* - Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface.
+- *Everything is file* - Ease of use and security is offered by treating hardware as a file.
+- *Small is beautiful*.
+- *Store data and configuration in flat text files* - Text file is a universal interface. Easy to create, backup and move to another system.
+- *Use shell scripts to increase leverage and portability* - Use shell script to automate common tasks across various UNIX / Linux installations.
+- *Chain programs together to complete complex task* - Use shell [pipes](https://bash.cyberciti.biz/guide/Pipes) and [filters](https://bash.cyberciti.biz/guide/Filters) to chain small utilities that perform one task at time.
+- *Choose portability over efficiency.*
+- *Keep it Simple, Stupid (KISS).*
+
+额外链接：
+
+- [Wikipedia:Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy)
+- [The Unix Philosophy in One Lesson](http://www.catb.org/~esr/writings/taoup/html/ch01s07.html)
+
+## 什么是shell脚本
+
+一般来说，shell是交互性的 ，也就是说你输入命令，shell接受并执行，返回结果。但是，如果你储存一系列的命令在一个文本文件里面然后执行，这也就是shell程序([shell program](https://bash.cyberciti.biz/wiki/index.php?title=Shell_program&action=edit&redlink=1))或者称为shell脚本([shell script](https://bash.cyberciti.biz/guide/Shell_script))
+
+**每个shell脚本都会包括一下几个部分:**
+
+- Shell kewwords 例如if...else语句， do...while语句
+- Shell commands 例如pwd, test, echo, continue, type等命令
+- Linux binary commands 例如w, who, free, etc等
+- 文本处理程序例如grep, awk, cut等
+- 函数可以将多个操作整合进一个函数
+- 控制流例如if...then...else或者shell loop去执行重复的操作
+
+**每个脚本都有一个目的**
+
+- 特殊目的：备份数据或者上传数据库（例如每隔一段时间执行某个脚本将将数据重新备份）
+- 执行命令：每个shell脚本就像一条条命令那样被简单执行（使用脚本处理某个数据）
+- 脚本代码利用：Shell脚本可以从现有脚本扩展。此外，还可以使用函数文件来打包经常使用的任务
+
+## 为什么使用shell脚本
+
+当你在终端不停执行重复命令的时候，shell脚本就显得很有用
+
+### 特性:
+
+- shell脚本可以从命令行或者文件读入数据参数，然后将结果返回到屏幕
+- 当你在重复执行同一个任务的时候，你就应该使用shell脚本来减少你的工作量
+  - 创建自己的实用工具
+  - 自动化的输入或者输出
+  - 定制管理任务
+  - 因为脚本的重复性及经过测试，所以会减少犯错的几率
+
+###  常见的应用场景:
+
+- 管理你的Linux系统
+- 数据备份和创建快照
+- 转储Oracle或者MySQL数据库进行备份
+- 创建基于电子邮件的警报系统
+- 找出什么程序吃掉了你部分的系统资源
+- 找出可用的内存
+- 找i出所有登陆的用户以及他们在做什么
+- 找出所有失败的登陆记录，如果同一个IP在重复尝试失败的登录，通过防火墙封掉该IP
+- 根据你的安全策略进行用户管理
+- 找出本地或者远程服务器的信息
+- 配置服务器
+
+### 优势:
+
+- 使用简单
+- 快速启动
+- 节约时间
+- 系统管理任务自动化
+- Shell脚本可以在几乎任何现代UNIX / Linux / BSD / Mac OS X操作系统上执行，因为它们是用解释语言编写的
+
+### 劣势:
+
+- 不同平台间会出现比较复杂的问题
+- 运行速度缓慢
+- 每一个shell命令都会开启一个新进程
+
+**本教程使用那种shell？**
+
+> Bash/Zsh shell
+
+### 学习目标
+
+完成本次课程以后，你可以学到:
+
+- 理解Linux shell编程的基础
+- 自行编写自动化的脚本
+- 自定义shell启动文件
+- 创建漂亮的实用程序
+- 控制你的管理任务，如Linux用户管理，Linux系统监控等
+
+## 本章节复习题
+
+1. 什么是shell
+
+- `徐爷的回答：一种交互环境，充当用户和kernel之间的解释器`
+
+2. 写下一个命令，列出终端下的文件
+
+- `ls`
+
+3. 写下一个命令，以逆创建时间的顺序列出所有以'.perl'结尾的文件信息
+
+- `ls -r *.perl `
+
+4. 写下一个命令，列出你在运行的程序
+
+- `ps -aux | grep youranme` or `top -u yourname `
+
+5. 写下一个命令，列出待打印的文件
+
+- `lpq` 需要安装软件
+
+6. 写下一个命令，删除3个文件分别叫做 file1.txt, file2.txt, and data1.txt
+
+- `rm file1.txt file2.txt data1.txt`
+
+7. 写下一个命令，在/tmp文件夹下创建一个子目录foo
+
+- `mkdir -p /tmp/foo`
+
+8. 写下一个命令，删除刚刚创建的目录
+
+- `rmdir /tmp/foo`
+
+9. 写下一个命令，列出`ls`命令所有的选项
+
+- `man ls`or `man ls`
+
