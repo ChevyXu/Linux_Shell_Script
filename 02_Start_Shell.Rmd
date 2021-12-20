@@ -1,0 +1,418 @@
+# 开始shell脚本编程 {#start}
+
+本章节学习目标：
+
+- 编写你第一个shell 程序
+
+- 理解创建一个shell脚本的步骤
+
+## Bash shell（全称Bourne again shell）
+
+> 有关bash的创建历史（来自[维基百科](<https://zh.wikipedia.org/zh-hans/Bash>)）：
+>
+> [Bourne shell](https://zh.wikipedia.org/wiki/Bourne_shell)是一个交互式的shell，由AT&T实验室的史蒂夫在1977年发布，位于大多数Unix系统上的/bin/sh，随着时间的发展，[GNU](https://zh.wikipedia.org/wiki/GNU)计划的诞生伴随着shell的开发，这个时候1987年布莱恩编写了Bash，也就是Bourne again shell，总的来说，Bash虽然是一个满足POSIX规范的shell，但有很多拓展。
+
+Bash就是shell，或者可以说是Linux系统的命令语言解释器：
+
+- Bash式[GNU](https://bash.cyberciti.biz/guide/GNU)计划的产物
+- Linux的默认shell
+- 反向兼容UNIX系统的sh
+- 与Korn shell(ksh)以及C shell(csh)兼容
+- 在多平台类似UNIX/dos/Windows都是可运行多个
+
+### BASH的提升特性
+
+- 命令行编辑
+- 命令行补全
+- 无限大小的命令历史
+- 提示控制
+- 不限大小的array
+- 以2-64为基数的整数运算
+- ……
+
+### 作者
+
+- Brian J. Fox authored the [GNU](https://bash.cyberciti.biz/guide/GNU) [Bash](https://bash.cyberciti.biz/guide/Bash) [shell](https://bash.cyberciti.biz/guide/Shell), in 1987.
+- Fox maintained [Bash](https://bash.cyberciti.biz/guide/Bash) as the primary maintainer until 1993, at which point Chet Ramey took over.
+- Chet Ramey is the current maintainer of the GNU Bourne Again Shell and GNU Readline.
+
+### 下载
+
+- bash式Linux的默认shell，最新版本可以在[official website](https://ftp.gnu.org/gnu/bash/)下载
+- [Bash home page](https://www.gnu.org/software/bash/bash.html)
+- [Chet's home page](https://cnswww.cns.cwru.edu/php/chet/)
+
+## shell命令
+
+bash shell有两种类型的命令：
+
+1. 内置命令
+2. 外部命令（在bin/目录里面的命令）
+
+### bash和命令类型
+
+bash接受以下几种类型的命令：
+
+- 别名（例如`ll`）
+- 关键词（例如`if`）
+- 函数（例如`genpassword`）
+- 内置命令（例如`pwd`）
+- 文件（例如/bin/date)
+
+### type命令
+
+找出某个命令(ls)是内置命令还是外部命令：
+
+```{bash}
+type ls
+```
+
+找出某个命令(command)是内置命令还是外部命令：
+
+```{bash}
+type -a history
+```
+
+### bash命令关键词以及内置命令
+
+- [JOB_SPEC &](https://bash.cyberciti.biz/guide/JOB_SPEC_%26)
+- [(( expression ))](https://bash.cyberciti.biz/guide/((_expression_)))
+- [. filename](https://bash.cyberciti.biz/guide/._filename)
+- [[:]]
+- [ arg... ]
+- [expression](https://bash.cyberciti.biz/guide/Expression)
+- [alias](https://bash.cyberciti.biz/guide/Alias)
+- [bg](https://bash.cyberciti.biz/guide/Bg)
+- [bind](https://bash.cyberciti.biz/guide/Bind)
+- [builtin](https://bash.cyberciti.biz/guide/Builtin)
+- [caller](https://bash.cyberciti.biz/wiki/index.php?title=Caller&action=edit&redlink=1)
+- [case](https://bash.cyberciti.biz/wiki/index.php?title=Case&action=edit&redlink=1)
+- [command](https://bash.cyberciti.biz/guide/Command)
+- [compgen](https://bash.cyberciti.biz/wiki/index.php?title=Compgen&action=edit&redlink=1)
+- [complete](https://bash.cyberciti.biz/wiki/index.php?title=Complete&action=edit&redlink=1)
+- [continue](https://bash.cyberciti.biz/guide/Continue)
+- [declare](https://bash.cyberciti.biz/guide/Declare)
+- [dirs](https://bash.cyberciti.biz/guide/Dirs)
+- [disown](https://bash.cyberciti.biz/guide/Disown)
+- [echo](https://bash.cyberciti.biz/wiki/index.php?title=Echo&action=edit&redlink=1)
+- [enable](https://bash.cyberciti.biz/wiki/index.php?title=Enable&action=edit&redlink=1)
+- [eval](https://bash.cyberciti.biz/guide/Eval)
+- [exec](https://bash.cyberciti.biz/wiki/index.php?title=Exec&action=edit&redlink=1)
+- [exit](https://bash.cyberciti.biz/wiki/index.php?title=Exit&action=edit&redlink=1)
+- [export](https://bash.cyberciti.biz/wiki/index.php?title=Export&action=edit&redlink=1)
+- [false](https://bash.cyberciti.biz/wiki/index.php?title=False&action=edit&redlink=1)
+- [fc](https://bash.cyberciti.biz/wiki/index.php?title=Fc&action=edit&redlink=1)
+- [fg](https://bash.cyberciti.biz/guide/Fg)
+- [for](https://bash.cyberciti.biz/guide/For)
+- [getopts](https://bash.cyberciti.biz/guide/Getopts)
+- [hash](https://bash.cyberciti.biz/wiki/index.php?title=Hash&action=edit&redlink=1)
+- [help](https://bash.cyberciti.biz/wiki/index.php?title=Help&action=edit&redlink=1)
+- [history](https://bash.cyberciti.biz/guide/History)
+- [if](https://bash.cyberciti.biz/wiki/index.php?title=If&action=edit&redlink=1)
+- [jobs](https://bash.cyberciti.biz/guide/Jobs)
+- [kill](https://bash.cyberciti.biz/wiki/index.php?title=Kill&action=edit&redlink=1)
+- [let](https://bash.cyberciti.biz/wiki/index.php?title=Let&action=edit&redlink=1)
+- [local](https://bash.cyberciti.biz/wiki/index.php?title=Local&action=edit&redlink=1)
+- [logout](https://bash.cyberciti.biz/guide/Logout)
+- [popd](https://bash.cyberciti.biz/guide/Popd)
+- [printf](https://bash.cyberciti.biz/guide/Printf)
+- [pushd](https://bash.cyberciti.biz/guide/Pushd)
+- [pwd](https://bash.cyberciti.biz/wiki/index.php?title=Pwd&action=edit&redlink=1)
+- [read](https://bash.cyberciti.biz/guide/Read)
+- [readonly](https://bash.cyberciti.biz/wiki/index.php?title=Readonly&action=edit&redlink=1)
+- [return](https://bash.cyberciti.biz/guide/Return)
+- [select](https://bash.cyberciti.biz/guide/Select)
+- [set](https://bash.cyberciti.biz/guide/Set)
+- [shift](https://bash.cyberciti.biz/guide/Shift)
+- [shopt](https://bash.cyberciti.biz/guide/Shopt)
+- [source](https://bash.cyberciti.biz/wiki/index.php?title=Source&action=edit&redlink=1)
+- [suspend](https://bash.cyberciti.biz/guide/Suspend)
+- [test](https://bash.cyberciti.biz/guide/Test)
+- [time](https://bash.cyberciti.biz/wiki/index.php?title=Time&action=edit&redlink=1)
+- [times](https://bash.cyberciti.biz/wiki/index.php?title=Times&action=edit&redlink=1)
+- [trap](https://bash.cyberciti.biz/wiki/index.php?title=Trap&action=edit&redlink=1)
+- [true](https://bash.cyberciti.biz/wiki/index.php?title=True&action=edit&redlink=1)
+- [type](https://bash.cyberciti.biz/wiki/index.php?title=Type&action=edit&redlink=1)
+- [typeset](https://bash.cyberciti.biz/guide/Typeset)
+- [ulimit](https://bash.cyberciti.biz/guide/Ulimit)
+- [umask](https://bash.cyberciti.biz/guide/Umask)
+- [unalias](https://bash.cyberciti.biz/wiki/index.php?title=Unalias&action=edit&redlink=1)
+- [unset](https://bash.cyberciti.biz/guide/Unset)
+- [until](https://bash.cyberciti.biz/wiki/index.php?title=Until&action=edit&redlink=1)
+- [variables](https://bash.cyberciti.biz/guide/Variables)
+- [while](https://bash.cyberciti.biz/wiki/index.php?title=While&action=edit&redlink=1)
+
+## Hello, World! 第一个shell脚本
+
+创建一个shell脚本你需要经过以下几个步骤：
+
+1. 利用一个文本编辑器（例如vi），将你的指令写入一个文本
+2. 保存该文本并退出
+3. 改变该文本的可执行权限
+4. 测试该脚本并放入你的生产环境
+5. 最简单的shell脚本就是一行代码告诉计算机执行一个命令
+
+让我们来熟悉vi的操作并创建第一个shell script
+
+```
+# 打开一个文件
+vi first_script.sh
+
+# 进入编辑模式
+# 按Esc键，然后按I键就进入编辑模式
+
+# 进入命令模式
+# 按Esc键就进入命令模式
+
+# 保存文件
+# 按Esc键然后输入:w
+# 或者按Esc键然后输入:w first_script.sh
+
+# 保存并退出文件
+# 按Esc键然后输入:wq
+# 或者按Esc键然后输入:x
+
+# 跳到某一行
+# 按Esc键然后输入:x, x代表第几行
+
+# 搜索一个字符
+# 按Esc键然后输入/str, str代表该字符
+
+# 退出vi（不保存）
+# 按Esc键然后输入:q
+```
+
+```shell
+# 让我们来编辑第一个脚本，输入以下字符并保存退出
+#!/bin/bash
+echo "Hello, World!" 
+echo "Knowledge is power."
+
+# 将该文件改为可以执行文件并执行
+new@Chevy-PC:~$ chmod 777 first_script.sh
+new@Chevy-PC:~$ ./first_script.sh
+Hello, World!
+Knowledge is power.
+```
+
+### Shebang
+
+在脚本的第一行，我们需要告诉系统用哪种程序来运行这个脚本，写法为`#!/path_to_binaries`，我们一般称其为Shebang或者bang行[^2]
+
+在bash脚本里面第一行我们一般写成`#!/bin/bash`，有些程序使用`perl`来运行的话，就写成`#!/bin/perl`
+
+一个`#!/bin.sh`的脚本示例：
+
+```shell
+etc/init.d/policykit
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          policykit
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:
+# Short-Description: Create PolicyKit runtime directories
+# Description:       Create directories which PolicyKit needs at runtime,
+#                    such as /var/run/PolicyKit
+### END INIT INFO
+
+# Author: Martin Pitt <martin.pitt@ubuntu.com>
+
+case "$1" in
+  start)
+        mkdir -p /var/run/PolicyKit
+        chown root:polkituser /var/run/PolicyKit
+        chmod 770 /var/run/PolicyKit
+	;;
+  stop|restart|force-reload)
+	;;
+  *)
+	echo "Usage: $SCRIPTNAME {start|stop|restart|force-reload}" >&2
+	exit 3
+	;;
+esac
+
+:
+```
+
+[^2]: [SBCL - Shebang Scripts](http://www.sbcl.org/manual/index.html#Shebang-Scripts)
+
+### Shell注释
+
+在脚本里面`#`号后面的代码会被忽略，这行代码我们成为注释，注释可以帮助我们理解代码并且便于修改：
+
+```shell
+#!/bin/bash
+# A Simple Shell Script To Get Linux Network Information
+# Vivek Gite - 30/Aug/2009
+echo "Current date : $(date) @ $(hostname)"
+echo "Network configuration"
+/sbin/ifconfig
+```
+
+多行注释可以使用[HERE DOCUMENT](https://bash.cyberciti.biz/guide/Here_documents) 特性来进行注释：
+
+```shell
+#!/bin/bash
+echo "Adding new users to LDAP Server..."
+<<COMMENT1
+    Master LDAP server : dir1.nixcraft.net.in 
+    Add user to master and it will get sync to backup server too
+    Profile and active directory hooks are below
+COMMENT1
+echo "Searching for user..."
+```
+
+### 设置脚本权限
+
+一个刚编辑完的脚本无法直接执行，你需要使用`chmod`命令给与其可执行权限或者直接调用对应的命令来执行，下面的操作具有同样的效果：
+
+```shell
+chmod +x script.sh && ./script.sh
+chmod 777 script.sh && ./script.sh
+
+sh script.sh
+```
+
+使用`ls -l `可以查看一个文件的权限：
+
+```shell
+new@Chevy-PC:~$ ls -l first.sh
+-rwxrwxrwx 1 new new 61 Jul 15 14:24 first.sh
+```
+
+更多`chomd`的操作可以使用`man chmod`查看
+
+>为什么不直接使用 `scriptname` 来调用脚本？为什么当工作目录`$PWD`正好是` scriptname` 所在目录时也不起作用？因为一些安全原因，当前目录`./ `并不会被默认添加到用户的$PATH路径中。因此需要用户显式使用 ./scriptname 在当前目录下调用脚本。
+
+### 脚本debug
+
+在运行脚本的时候需要加上`-x`参数或者`-xv`参数，又或者是将shebang行改成`#!/bin.bash-x`
+
+#### 使用内置命令
+
+bash shell提供了debug选项，可以使用`set`命令打开或者关闭：
+
+- `set -x`：当脚本被执行的时候展示命令及参数
+- `set -v`：当脚本被读入的时候展示输入行
+- `set -n`：读入命令但不执行（在检查脚本是否有变量名重合的时候）
+
+```shell
+#!/bin/bash
+### Turn on debug mode ###
+set -x
+
+# Run shell commands
+echo "Hello $(LOGNAME)"
+echo "Today is $(date)"
+echo "Users currently on the machine, and their processes:"
+
+### Turn OFF debug mode ###
+set +x
+
+# Add more commands without debug mode
+```
+
+```shell
+#!/bin/bash
+set -n # only read command but do not execute them
+set -o noexec
+echo "This is a test"
+# no file is created as bash will only read commands but do not executes them 
+```
+
+## 本章节复习题
+
+#### 练习题1
+
+按照下面代码写一个脚本并运行，观察输出：
+
+```shell
+# Script to print currently logged in users information, and current date & time.
+clear
+echo "Hello $USER"
+echo -e "Today is \c ";date
+echo -e "Number of user login : \c" ; who | wc -l
+echo "Calendar"
+cal
+exit 0
+```
+
+​	输出结果：
+
+```shell
+Hello new
+Today is Tue Jul 16 15:34:58 CST 2019
+Number of user login : 0
+Calendar
+     July 2019
+Su Mo Tu We Th Fr Sa
+    1  2  3  4  5  6
+ 7  8  9 10 11 12 13
+14 15 16 17 18 19 20
+21 22 23 24 25 26 27
+28 29 30 31
+```
+
+#### 练习题2
+
+写一个程序，打印出你最喜欢的电影名称，同时在下一行打印出导演的名称（**以下是我自己的答案**）：
+
+```shell
+#!/bin/bash
+# print moive and director
+
+set -e
+
+my_favorite_moive="gone_with_the_wind"
+
+moive_director="not_known"
+
+echo -e "my_favorite_moive is \c"; 
+echo $my_favorite_moive
+echo -e "the moive's director is \c"; 
+echo $moive_director
+
+exit 0
+```
+
+#### 练习题3
+
+写一个shell脚本，打印你的名字，在用户按<ENTER>键之前保持等待状态：
+
+```shell
+#!/bin/bash
+echo "Vivek Gite"
+read -p "Press [Enter] key to continue..." fakeEnterKey
+```
+
+#### 练习题4
+
+列出十个内置命令和外部命令:
+
+```shell
+# builtin commands
+history
+break
+cd
+continue
+eval
+exit
+grep
+kill
+
+# external commands
+ls
+gzip
+```
+
+#### 练习题5
+
+使用`cd`命令进入/etc/init.d目录下，查看各种系统启动脚本：
+
+
+```{bash}
+cd /etc/init.d/
+ls
+```

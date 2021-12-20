@@ -33,7 +33,7 @@
   
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
 <link rel="prev" href="index.html"/>
-
+<link rel="next" href="start.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -60,7 +60,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -170,6 +169,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#本章节复习题"><i class="fa fa-check"></i><b>1.10</b> 本章节复习题</a></li>
 </ul></li>
+<li class="chapter" data-level="2" data-path="start.html"><a href="start.html"><i class="fa fa-check"></i><b>2</b> 开始shell脚本编程</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="start.html"><a href="start.html#bash-shell全称bourne-again-shell"><i class="fa fa-check"></i><b>2.1</b> Bash shell（全称Bourne again shell）</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="start.html"><a href="start.html#bash的提升特性"><i class="fa fa-check"></i><b>2.1.1</b> BASH的提升特性</a></li>
+<li class="chapter" data-level="2.1.2" data-path="start.html"><a href="start.html#作者"><i class="fa fa-check"></i><b>2.1.2</b> 作者</a></li>
+<li class="chapter" data-level="2.1.3" data-path="start.html"><a href="start.html#下载"><i class="fa fa-check"></i><b>2.1.3</b> 下载</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="start.html"><a href="start.html#shell命令"><i class="fa fa-check"></i><b>2.2</b> shell命令</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="start.html"><a href="start.html#bash和命令类型"><i class="fa fa-check"></i><b>2.2.1</b> bash和命令类型</a></li>
+<li class="chapter" data-level="2.2.2" data-path="start.html"><a href="start.html#type命令"><i class="fa fa-check"></i><b>2.2.2</b> type命令</a></li>
+<li class="chapter" data-level="2.2.3" data-path="start.html"><a href="start.html#bash命令关键词以及内置命令"><i class="fa fa-check"></i><b>2.2.3</b> bash命令关键词以及内置命令</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="start.html"><a href="start.html#hello-world-第一个shell脚本"><i class="fa fa-check"></i><b>2.3</b> Hello, World! 第一个shell脚本</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="start.html"><a href="start.html#shebang"><i class="fa fa-check"></i><b>2.3.1</b> Shebang</a></li>
+<li class="chapter" data-level="2.3.2" data-path="start.html"><a href="start.html#shell注释"><i class="fa fa-check"></i><b>2.3.2</b> Shell注释</a></li>
+<li class="chapter" data-level="2.3.3" data-path="start.html"><a href="start.html#设置脚本权限"><i class="fa fa-check"></i><b>2.3.3</b> 设置脚本权限</a></li>
+<li class="chapter" data-level="2.3.4" data-path="start.html"><a href="start.html#脚本debug"><i class="fa fa-check"></i><b>2.3.4</b> 脚本debug</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="start.html"><a href="start.html#本章节复习题-1"><i class="fa fa-check"></i><b>2.4</b> 本章节复习题</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="http://xuchunhui.top" target="blank">Chunhui's Blog</a></li>
 
@@ -231,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="谁创建了linux" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> 谁创建了Linux</h2>
-<p>1991年，Linus Torvalds在大学期间接触到了UNIX，他当时使用的是一个适用于科研的Unix版本(Minix)，但是Minix有着不少缺陷，于是他就开发了他自己的”Minix”，也就是后来的Linux，Linux的开源也就是从这个时候开始的。</p>
+<p>1991年，Linus Torvalds在大学期间接触到了UNIX，他当时使用的是一个适用于科研的Unix版本(Minix)，但是Minix有着不少缺陷，于是他就开发了他自己的“Minix”，也就是后来的Linux，Linux的开源也就是从这个时候开始的。</p>
 <div class="figure">
 <img src="https://bash.cyberciti.biz/uploads/bashwiki/6/69/Linus_Torvalds.jpeg" alt="" />
 <p class="caption">Linus Torvalds</p>
@@ -328,30 +350,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.6.3</span> 如何知道我现在有哪些shell</h3>
 <p>执行以下的命令即可完成:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="intro.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/shells</span></code></pre></div>
-<pre><code>## # List of acceptable shells for chpass(1).
-## # Ftpd will not allow users to connect who are not using
-## # one of these shells.
-## 
-## /bin/bash
-## /bin/csh
-## /bin/dash
-## /bin/ksh
+<pre><code>## # /etc/shells: valid login shells
 ## /bin/sh
-## /bin/tcsh
-## /bin/zsh</code></pre>
+## /bin/bash
+## /usr/bin/bash
+## /bin/rbash
+## /usr/bin/rbash
+## /bin/dash
+## /usr/bin/dash
+## /usr/bin/tmux
+## /usr/bin/screen</code></pre>
 <p>多个结果意味着你的Linux支持多个shell</p>
 </div>
 <div id="命令行界面-command-line-interface-cli" class="section level3" number="1.6.4">
 <h3><span class="header-section-number">1.6.4</span> 命令行界面 (Command Line Interface, CLI)</h3>
 <p>shell提供了连接Linux的界面，你可以通过键盘或者其他输入设备完成操作，shell同时也可以成为命令行界面 (Command Line Interface)， 发现现在使用的shell可以通过使用以下命令:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="intro.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$SHELL</span></span></code></pre></div>
-<pre><code>## /bin/zsh</code></pre>
+<pre><code>## /bin/bash</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="intro.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> <span class="va">$$</span></span>
-<span id="cb5-2"><a href="intro.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> <span class="at">-p</span> <span class="va">$$</span></span></code></pre></div>
-<pre><code>##   PID   TT  STAT      TIME COMMAND
-## 87383   ??  S      0:00.00 bash -c ps $$\012ps -p $$
-##   PID TTY           TIME CMD
-## 87383 ??         0:00.00 ps -p 87383</code></pre>
+<span id="cb5-2"><a href="intro.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ps</span> -p <span class="va">$$</span></span></code></pre></div>
+<pre><code>##   PID TTY      STAT   TIME COMMAND
+##   233 tty2     S      0:00 /bin/bash -c ps 233 ps -p 233
+##   PID TTY          TIME CMD
+##   233 tty2     00:00:00 ps</code></pre>
 <p>这就说明我目前使用的是bash/zsh shell</p>
 </div>
 <div id="基本的命令行操作" class="section level3" number="1.6.5">
@@ -374,31 +395,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">1.6.6</span> 执行一个命令</h3>
 <p>简单的键入你的命令然后回车即可，例如<code>date</code>命令可以查看当前的时间， <code>man data</code>命令可以查看<code>date</code>命令的使用文档，<code>info date</code>可以查看<code>date</code>命令的信息文档，同时常见的命令都会有<code>-h / --help</code>参数用以展示帮助选项:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="intro.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span></code></pre></div>
-<pre><code>## Mon Dec 13 10:00:37 CST 2021</code></pre>
+<pre><code>## Mon Dec 20 12:02:46 CST 2021</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="intro.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> date <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div>
-<pre><code>## DATE(1)                      General Commands Manual                     DATE(1)
-## 
-## NNAAMMEE
-##      ddaattee – display or set date and time
-## 
-## SSYYNNOOPPSSIISS
-##      ddaattee [--jjRRuu] [--rr _s_e_c_o_n_d_s | _f_i_l_e_n_a_m_e] [--vv [++|--]_v_a_l[_y_m_w_d_H_M_S]] _._._.
-##           [++_o_u_t_p_u_t___f_m_t]
-##      ddaattee [--jjnnuu] [[[_m_m]_d_d]_H_H]_M_M[[_c_c]_y_y][_._s_s]
-##      ddaattee [--jjnnRRuu] --ff _i_n_p_u_t___f_m_t _n_e_w___d_a_t_e [++_o_u_t_p_u_t___f_m_t]</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">info</span> date <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div>
-<pre><code>## info: Writing node (*manpages*)date...
-## info: Done.
-## File: *manpages*,  Node: date,  Up: (dir)
-## 
-## DATE(1)                      General Commands Manual                     DATE(1)
+<pre><code>## DATE(1)                                             User Commands                                             DATE(1)
 ## 
 ## NAME
-##      date – display or set date and time
+##        date - print or set the system date and time
 ## 
 ## SYNOPSIS
-##      date [-jRu] [-r seconds | filename] [-v [+|-]val[ymwdHMS]] ...
-##           [+output_fmt]</code></pre>
+##        date [OPTION]... [+FORMAT]
+##        date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
+## 
+## DESCRIPTION</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">info</span> date <span class="kw">|</span> <span class="fu">head</span></span></code></pre></div>
+<pre><code>## File: coreutils.info,  Node: date invocation,  Next: arch invocation,  Up: System context
+## 
+## 21.1 鈥榙ate鈥&lt;99&gt;: Print or set system date and time
+## ==============================================
+## 
+## Synopses:
+## 
+##      date [OPTION]... [+FORMAT]
+##      date [-u|--utc|--universal] [ MMDDhhmm[[CC]YY][.ss] ]</code></pre>
 </div>
 </div>
 <div id="unix的哲学" class="section level2" number="1.7">
@@ -564,12 +582,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </div>
-
-
-
-
-
-
 <div class="footnotes">
 <hr />
 <ol start="1">
@@ -581,8 +593,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="start.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -613,7 +625,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01_第一章.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01_Linux快速介绍.Rmd",
 "text": "编辑"
 },
 "history": {
